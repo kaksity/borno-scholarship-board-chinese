@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('web.applicants.main-layout');
+    return view('web.applicants.auth-layout');
 });
