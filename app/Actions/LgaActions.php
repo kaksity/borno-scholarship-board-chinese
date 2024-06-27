@@ -10,10 +10,9 @@ class LgaActions
     public function __construct(
         private Lga $lga
     )
-    {
-        
-    }
-    public function getLgas($relationships = [])
+    {}
+
+    public function getLgas()
     {
         return $this->lga->orderBy('name', 'ASC')->get();
     }
