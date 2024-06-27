@@ -2,6 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('web.applicants.auth-layout');
-});
+Route::prefix('/applicant')->group(__DIR__ . '/Web/applicant.php');

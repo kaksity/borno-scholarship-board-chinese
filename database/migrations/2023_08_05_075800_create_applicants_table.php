@@ -19,7 +19,7 @@ class CreateApplicantsTable extends Migration
             $table->string('other_names');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('programme')->default('Undergraduate');
+            $table->string('phone_number');
             $table->string('year')->nullable();
             $table->string('status')->default('active');
             $table->string('tracking_code')->nullable();
