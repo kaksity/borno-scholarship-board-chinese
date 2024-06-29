@@ -24,6 +24,13 @@ class ApplicantBioDataActions
         ])->first();
     }
 
+    public function getApplicantBioDataByApplicantId($applicantId, $relationships = [])
+    {
+        return $this->applicantBioData->with($relationships)->where([
+            'applicant_id' => $applicantId
+        ])->first();
+    }
+
     public function updateApplicantBioDataRecord($data, $id)
     {
         return $this->applicantBioData->where([

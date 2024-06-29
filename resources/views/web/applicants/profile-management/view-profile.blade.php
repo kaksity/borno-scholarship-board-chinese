@@ -9,73 +9,155 @@
                 <h5 class="card-title mb-0">Profile Information</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('applicant.profile-management.process-profile-form') }}" method="post">
+                <form action="{{ route('applicant.profile-management.process-profile-form') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label class="form-label">Surname</label>
-                        <input class="form-control form-control-lg" type="text" name="surname" placeholder="Enter your surname" value="{{ $applicant->surname ?? old('surname') }}" />
-                        @error('surname')
-                        <div class="text-danger">
-                            {{ $message }}
+                    <div class="form-group row mb-2">
+                        <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Surname</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" disabled name="surname" value="{{ $applicant->surname }}" placeholder="Surname">
+                                @error('surname')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Other names</label>
-                        <input class="form-control form-control-lg" type="text" name="other_names" placeholder="Enter your other names" value="{{$applicant->other_names ?? old('other_names') }}" />
-                        @error('other_names')
-                        <div class="text-danger">
-                            {{ $message }}
+                        <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Other Names</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" disabled name="other_names" value="{{ $applicant->other_names }}" placeholder="Other Names">
+                                @error('other_names')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input class="form-control form-control-lg" disabled type="text" placeholder="Enter your email address" value="{{$applicant->email}}" />
-                        @error('email')
-                        <div class="text-danger">
-                            {{ $message }}
+                        <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Guardian Full Name</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" name="guardian_full_name" value="{{ $applicant?->applicantBioData->guardian_full_name ?? old('guardian_full_name')}}" placeholder="Other Names">
+                                @error('guardian_full_name')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Phone Number</label>
-                        <input class="form-control form-control-lg" type="text" name="phone_number" placeholder="Enter your phone number" value="{{$applicant->phone_number ?? old('phone_number') }}" />
-                        @error('phone_number')
-                        <div class="text-danger">
-                            {{ $message }}
+                    <div class="form-group row mb-2">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="phone" class="col-form-label">Phone Number</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" name="phone_number" value="{{ $applicant->phone_number ?? old('phone_number') }}" placeholder="Phone Number">
+                                @error('phone_number')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Year of WAEC</label>
-                        <input class="form-control form-control-lg" disabled type="text" value="{{$applicant->year }}" />
-                        @error('phone_number')
-                        <div class="text-danger">
-                            {{ $message }}
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="nin" class="col-form-label">Gender</label>
+                            <div>
+                                <select name="gender" class="form-select mb-3">
+                                    <option value="">Select a Gender</option>
+                                    <option value="Male" @if($applicant?->applicantBioData->gender === 'Male')
+                                        selected
+                                        @endif
+                                        @if(old('gender') == 'Male')
+                                        selected
+                                        @endif
+                                        >
+                                        Male
+                                    </option>
+                                    <option value="Male" @if($applicant->applicantBioData->gender === 'Female')
+                                        selected
+                                        @endif
+                                        @if(old('gender') == 'Female')
+                                        selected
+                                        @endif
+                                        >
+                                        Female
+                                    </option>
+                                </select>
+                                @error('gender')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">National Identity Number(NIN)</label>
-                        <input class="form-control form-control-lg" type="text" name="national_identity_number" placeholder="Enter Farmer's National Identity Number" value="{{$applicant?->nin ?? old('nin') }}" />
-                        @error('nin')
-                        <div class="text-danger">
-                            {{ $message }}
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="nin" class="col-form-label">National Identity Number(NIN)</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" value="{{ $applicant?->applicantBioData->nin ?? old('nin') }}" name="nin" placeholder="National Identity Number(NIN)">
+                                @error('nin')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Local Government Area(LGA)</label>
-                        <select class="form-select mb-3" name="lga_id" id="select_lga">
-                            <option selected>Select a lga</option>
-                            @foreach ($lgas as $lga)
-                            <option value="{{ $lga->id }}">{{ $lga->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-group row mb-2">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="nin" class="col-form-label">Date of Birth</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" placeholder="Date of Birth (YYYY-MM-DD)" value="{{ $applicant?->applicantBioData->date_of_birth ?? old('date_of_birth') }}" name="date_of_birth">
+                                @error('date_of_birth')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Place of Birth</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" placeholder="Place of Birth" value="{{ $applicant?->applicantBioData->place_of_birth ?? old('place_of_birth') }}" name="place_of_birth">
+                                @error('place_of_birth')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Contact Address</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" placeholder="Contact Address" value="{{ $applicant?->applicantBioData->contact_address ?? old('contact_address') }}" name="contact_address">
+                                @error('contact_address')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="name" class="form-label">Local Government Area</label>
+                            <div>
+                                <select class="form-select mb-3" name="lga_id">
+                                    <option value="">Select Local Government Aread</option>
+                                    @foreach ($lgas as $lga)
+                                    <option value="{{ $lga->id }}" @if($lga->id == old('lga_id')) selected @endif
+                                        @if($lga->id == $applicant?->applicantBioData->lga_id) selected @endif
+                                        >
+                                        {{ $lga->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @error('lga_id')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary" value="Update Profile">Update Profile</button>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Save & Continue</button>
                     </div>
                 </form>
             </div>

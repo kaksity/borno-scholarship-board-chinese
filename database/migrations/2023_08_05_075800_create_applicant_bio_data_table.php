@@ -24,7 +24,7 @@ class CreateApplicantBioDataTable extends Migration
             $table->string('contact_address')->nullable();
             $table->string('place_of_birth')->nullable();
             $table->string('nin')->nullable();
-            $table->integer('lga_id')->nullable();
+            $table->uuid('lga_id')->nullable();
             $table->string('passport_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
