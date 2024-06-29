@@ -40,6 +40,9 @@
     </form>
 </div>
 <div class="text-center mb-3">
+    Don't have an account? <a href="{{ route('applicant.register.display-register-form') }}">Create an Account</a>
+</div>
+<div class="text-center mb-3">
     Forgot your password? <a href="#">Reset Password</a>
 </div>
 

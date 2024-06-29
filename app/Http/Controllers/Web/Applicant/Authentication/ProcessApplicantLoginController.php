@@ -37,6 +37,6 @@ class ProcessApplicantLoginController extends Controller
         ], $request->remember_me);
 
         // Redirect the user to the login endpoints
-        return back();
+        return redirect()->route('applicant.profile-management.display-profile-form');
     }
 }

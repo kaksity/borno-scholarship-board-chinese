@@ -12,7 +12,7 @@ class LgaActions
     )
     {}
 
-    public function getLgas()
+    public function listLgas()
     {
         return $this->lga->orderBy('name', 'ASC')->get();
     }

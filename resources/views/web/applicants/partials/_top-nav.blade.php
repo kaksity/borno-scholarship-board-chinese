@@ -16,7 +16,10 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i>Change Password</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Log out</a>
+                    <form action="{{ route('applicant.authentication.login.process-logout-form') }}" method="post">
+                        @csrf
+                        <input class="dropdown-item" type="submit" value="Logout">
+                    </form>
                 </div>
             </li>
         </ul>

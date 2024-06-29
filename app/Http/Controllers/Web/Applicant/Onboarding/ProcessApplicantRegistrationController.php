@@ -57,6 +57,6 @@ class ProcessApplicantRegistrationController extends Controller
         //     'token' => $token
         // ]));
 
-        // return redirect()->route('applicant.applicant-bio-data.index');
+        return redirect()->route('applicant.profile-management.display-profile-form');
     }
 }
