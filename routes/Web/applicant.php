@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayApplicationProcessingViewController;
 use App\Http\Controllers\Web\Applicant\Onboarding\DisplayOnboardingViewController;
 use App\Http\Controllers\Web\Applicant\Onboarding\ProcessApplicantRegistrationController;
 use App\Http\Controllers\Web\Applicant\Authentication\DisplayLoginViewController;
@@ -34,5 +35,9 @@ Route::group(['middleware' => 'auth:applicant'], function() {
         Route::get('/', [DisplayUploadDocumentViewController::class, 'handle'])->name('applicant.upload-management.display-upload-document-form');
         Route::post('/', [ProcessUploadDocumentController::class, 'handle'])->name('applicant.upload-management.process-upload-document-form');
         Route::delete('/{id}', [ProcessDeleteUploadedDocumentController::class, 'handle'])->name('applicant.upload-management.process-delete-uploaded-document');
+    });
+
+    Route::group(['prefix' => 'application-processing'], function() {
+        Route::get('/', [DisplayApplicationProcessingViewController::class, 'handle'])->name('applicant.application-processing.display-application-processing-form');
     });
 });
