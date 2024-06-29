@@ -14,7 +14,7 @@ class CreateLgasTable extends Migration
     public function up()
     {
         Schema::create('lgas', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();

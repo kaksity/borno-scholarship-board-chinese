@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class AbstractAuthenticatableModel extends Authenticatable
 {
-    use SoftDeletes, HasFactory, Notifiable;
+    use HasUuids, SoftDeletes, HasFactory, Notifiable;
 
     protected $guarded = [];
 }

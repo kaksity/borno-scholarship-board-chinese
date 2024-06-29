@@ -14,8 +14,8 @@ class CreateApplicantSchoolDataTable extends Migration
     public function up()
     {
         Schema::create('applicant_school_data', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('applicant_id')->index();
+            $table->uuid('id')->primary();
+            $table->uuid('applicant_id')->index();
             $table->string('identity_number')->nullable();
             $table->string('institution_type')->default('University');
             $table->string('current_level')->nullable();

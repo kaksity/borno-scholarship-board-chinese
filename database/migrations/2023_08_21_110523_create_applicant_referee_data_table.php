@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('applicant_referee_data', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('applicant_id')->index();
+            $table->uuid('id')->primary();
+            $table->uuid('applicant_id')->index();
             $table->string('full_name');
             $table->string('occupation');
             $table->string('phone_number');
