@@ -17,6 +17,6 @@ class ProcessDeleteUploadedDocumentController extends Controller
     public function handle($id)
     {
         $this->applicantUploadedDocumentDataActions->deleteApplicantUploadedDocumentDataRecord($id);
-        return back()->with('status', 'Applicant Uploaded Document record was deleted successfully');
+        return back()->with('success', 'Applicant Uploaded Document record was deleted successfully');
     }
 }

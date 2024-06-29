@@ -31,7 +31,7 @@ class ProcessApplicantRegistrationController extends Controller
         );
 
         if (!is_null($applicant)) {
-            return back()->with('status', 'Applicant record already exists');
+            return back()->with('error', 'Applicant record already exists. Kindly log into your account');
         }
 
         $createApplicantOptions = $request->safe()->merge([

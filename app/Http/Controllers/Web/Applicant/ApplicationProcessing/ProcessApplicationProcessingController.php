@@ -35,6 +35,6 @@ class ProcessApplicationProcessingController extends Controller
             $createUploadedOptions
         );
 
-        return back()->with('status', 'Applicant subject record was created successfully');
+        return back()->with('success', 'Applicant subject record was created successfully');
     }
 }

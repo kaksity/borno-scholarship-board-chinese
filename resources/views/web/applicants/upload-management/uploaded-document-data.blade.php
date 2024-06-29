@@ -10,9 +10,9 @@
                 <h5 class="card-title mb-0">Document Uploads Information</h5>
             </div>
             <div class="card-body">
-                @if (session()->has('status'))
+                @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible" role="alert">
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div>
                 @endif
                 <form action="{{ route('applicant.upload-management.process-upload-document-form') }}" method="POST" enctype="multipart/form-data">

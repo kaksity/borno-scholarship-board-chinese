@@ -33,6 +33,6 @@ class ProcessUploadDocumentController extends Controller
             $createUploadedOptions
         );
 
-        return back()->with('status', 'Applicant Uploaded Document record was created successfully');
+        return back()->with('success', 'Applicant Uploaded Document record was created successfully');
     }
 }

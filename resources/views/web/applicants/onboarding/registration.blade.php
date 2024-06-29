@@ -8,6 +8,11 @@
     </p>
 </div>
 <div class="m-sm-3">
+    @if (session()->has('error'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
     <form action="{{ route('applicant.register.process-register-form') }}" method="post">
         @csrf
         <div class="mb-3">

@@ -20,15 +20,13 @@ class ProcessApplicantLoginController extends Controller
         $existingApplicant = $this->applicantActions->getApplicantByEmailAddress($request->email);
 
         if (is_null($existingApplicant)) {
-            session('error', 'Invalid login credential. Kindly create an account');
-            return back();
+            return back()->with('error', 'Invalid login credential. Kindly create an account');
         }
 
         $isPasswordValid = Hash::check($request->password, $existingApplicant->password);
 
         if ($isPasswordValid == false) {
-            session('error', 'Invalid login credential. Kindly create an account');
-            return back();
+            return back()->with('error', 'Invalid login credential. Kindly create an account');
         }
 
         auth('applicant')->attempt([

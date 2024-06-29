@@ -20,6 +20,6 @@ class ProcessDeleteApplicationProcessingController extends Controller
     {
         $this->applicantSubjectDataActions->deleteApplicantSubjectDataRecord($id);
 
-        return back()->with('status', 'Applicant subject record was deleted successfully');
+        return back()->with('success', 'Applicant subject record was deleted successfully');
     }
 }
