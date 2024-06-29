@@ -50,11 +50,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
-                        {{-- @if (auth('applicant')->user()->status === 'Applying') --}}
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        {{-- @else
-                            <button type="button" class="btn btn-primary" disabled>Application already been submitted</button>
-                        @endif --}}
+                        <button type="submit" class="btn btn-primary" @if($applicant->status == 'Submitted') disabled @endif>Save</button>
                     </div>
                 </form>
 
@@ -63,13 +59,16 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Uploaded Document</th>
+                                @if($applicant->status == 'Applying')
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($applicantUploadDocuments as $applicantUploadDocument)
                             <tr>
                                 <td>{{ $applicantUploadDocument->documentType->name }}</td>
+                                @if($applicant->status == 'Applying')
                                 <td>
                                     <form action="{{ route('applicant.upload-management.process-delete-uploaded-document', [$applicantUploadDocument->id]) }}" method="POST">
                                         @csrf
@@ -80,6 +79,7 @@
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

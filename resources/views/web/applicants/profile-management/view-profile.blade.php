@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Save & Continue</button>
+                        <button type="submit" @if($applicant->status == 'Submitted') disabled @endif class="btn btn-primary">Save & Continue</button>
                     </div>
                 </form>
             </div>

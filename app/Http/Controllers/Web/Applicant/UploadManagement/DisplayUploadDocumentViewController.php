@@ -34,7 +34,8 @@ class DisplayUploadDocumentViewController extends Controller
 
         $data = [
             'documentTypes' => $documentTypes,
-            'applicantUploadDocuments' => $applicantUploadDocuments
+            'applicantUploadDocuments' => $applicantUploadDocuments,
+            'applicant' => $loggedInApplicant
         ];
 
         return view('web.applicants.upload-management.uploaded-document-data')->with($data);

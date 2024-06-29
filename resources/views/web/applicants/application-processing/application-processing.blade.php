@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" @if($applicant->status == 'Submitted') disabled @endif>Save</button>
                     </div>
                 </form>
 
@@ -74,7 +74,9 @@
                                 <th>Subject</th>
                                 <th>Grade</th>
                                 <th>Percentage Earned</th>
+                                @if($applicant->status == 'Applying')
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -83,6 +85,7 @@
                                 <td>{{ $applicantSubject->subject->name }}</td>
                                 <td>{{ $applicantSubject->grade->name }}</td>
                                 <td>{{ $applicantSubject->grade->grade }}</td>
+                                @if($applicant->status == 'Applying')
                                 <td>
                                     <form action="{{ route('applicant.application-processing.process-delete-application-processing', [$applicantSubject->id]) }}" method="POST">
                                         @csrf
@@ -90,6 +93,7 @@
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
@@ -101,7 +105,7 @@
                     </div>
                     <form action="{{ route('applicant.application-processing.process-submit-application-processing-form') }}" method="post">
                         @csrf
-                        <input type="submit" value="Submit Application" class="btn btn-primary">
+                        <input type="submit" value="Submit Application" class="btn btn-primary" @if($applicant->status == 'Submitted') disabled @endif>
                     </form>
                 </div>
             </div>

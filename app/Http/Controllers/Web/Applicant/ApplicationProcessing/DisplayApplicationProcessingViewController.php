@@ -40,7 +40,8 @@ class DisplayApplicationProcessingViewController extends Controller
         return view('web.applicants.application-processing.application-processing',[
             'subjects' => $subjects,
             'grades' => $grades,
-            'applicantSubjectData' => $applicantSubjectData
+            'applicantSubjectData' => $applicantSubjectData,
+            'applicant' => $loggedInApplicant
         ]);
     }
 }

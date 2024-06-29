@@ -20,6 +20,10 @@ class ProcessSubmitApplicationProcessingController extends Controller
     {
         $loggedInApplicant = auth('applicant')->user();
 
+        if($loggedInApplicant->status == 'Submitted') {
+            return back()->with('error', 'Application has been submitted');
+        }
+
         $getApplicantSubjectFilterOptions = [
             'applicant_id' => $loggedInApplicant->id
         ];
