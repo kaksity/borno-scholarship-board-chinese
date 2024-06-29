@@ -16,7 +16,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
+                <a class="sidebar-link" href="{{ route('applicant.upload-management.display-upload-document-form') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Uploads</span>
                 </a>
             </li>

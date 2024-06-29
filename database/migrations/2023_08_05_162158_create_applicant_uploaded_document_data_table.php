@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('applicant_uploaded_document_data', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('applicant_id')->index();
-            $table->bigInteger('document_type_id')->index();
+            $table->uuid('document_type_id')->index();
             $table->string('file_path');
             $table->softDeletes();
             $table->timestamps();

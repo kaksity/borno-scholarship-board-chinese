@@ -37,7 +37,7 @@ class DocumentTypeActions
         ])->first();
     }
 
-    public function getDocumentTypes($relationships = [])
+    public function listDocumentTypes($relationships = [])
     {
         return $this->documentType->with($relationships)->orderBy('name', 'ASC')->get();
     }
