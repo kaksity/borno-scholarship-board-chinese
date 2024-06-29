@@ -14,8 +14,8 @@ class CreateApplicantBioDataTable extends Migration
     public function up()
     {
         Schema::create('applicant_bio_data', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('applicant_id')->index();
+            $table->uuid('id')->primary();
+            $table->uuid('applicant_id')->index();
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('gender')->nullable();

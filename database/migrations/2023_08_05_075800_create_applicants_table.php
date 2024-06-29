@@ -14,7 +14,7 @@ class CreateApplicantsTable extends Migration
     public function up()
     {
         Schema::create('applicants', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('surname');
             $table->string('other_names');
             $table->string('email')->unique();

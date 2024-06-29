@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('remita_service_types', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('programme');
             $table->decimal('amount');
             $table->string('value');

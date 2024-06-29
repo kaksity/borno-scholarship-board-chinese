@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('applicant_verifications', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('applicant_id')->index();
+            $table->uuid('id')->primary();
+            $table->uuid('applicant_id')->index();
             $table->dateTime('expires_at');
             $table->string('purpose')->default('account-verification');
             $table->string('token');
