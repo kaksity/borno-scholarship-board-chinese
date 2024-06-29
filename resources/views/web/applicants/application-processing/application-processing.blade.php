@@ -1,12 +1,13 @@
 @extends('web.applicants.main-layout')
 
-@section('page-title', 'Profile')
+@section('page-title', 'Application Processing')
+
 @section('main-content')
 <div class="row">
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Document Uploads Information</h5>
+                <h5 class="card-title mb-0">Application Information</h5>
             </div>
             <div class="card-body">
                 @if (session()->has('status'))

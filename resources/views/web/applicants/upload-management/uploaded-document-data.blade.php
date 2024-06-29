@@ -1,6 +1,7 @@
 @extends('web.applicants.main-layout')
 
-@section('page-title', 'Profile')
+@section('page-title', 'Uploads')
+
 @section('main-content')
 <div class="row">
     <div class="col-12 col-lg-12">
@@ -83,6 +84,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+
+                <div class="mt-3">
+                    <a href="{{ route('applicant.application-processing.display-application-processing-form') }}" class="btn btn-primary">Save & Continue</a>
                 </div>
             </div>
         </div>

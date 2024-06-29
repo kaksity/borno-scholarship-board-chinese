@@ -43,6 +43,6 @@ class ProcessUpdateProfileController extends Controller
             );
         });
 
-        return back();
+        return redirect()->route('applicant.upload-management.display-upload-document-form');
     }
 }
