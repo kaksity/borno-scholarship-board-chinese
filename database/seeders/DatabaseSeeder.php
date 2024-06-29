@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(GradeSeeder::class);
         $this->call(SubjectSeeder::class);
         $this->call(LgaSeeder::class);
         $this->call(DocumentTypeSeeder::class);

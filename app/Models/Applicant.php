@@ -6,6 +6,10 @@ class Applicant extends AbstractAuthenticatableModel
 {
     protected $guard = 'applicant';
 
+    protected $casts = [
+        'has_passed_grade_point' => 'boolean'
+    ];
+
     public function applicantBioData()
     {
         return $this->hasOne(ApplicantBioData::class, 'applicant_id');

@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayApplicationProcessingViewController;
+use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessApplicationProcessingController;
+use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessDeleteApplicationProcessingController;
+use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessSubmitApplicationProcessingController;
 use App\Http\Controllers\Web\Applicant\Onboarding\DisplayOnboardingViewController;
 use App\Http\Controllers\Web\Applicant\Onboarding\ProcessApplicantRegistrationController;
 use App\Http\Controllers\Web\Applicant\Authentication\DisplayLoginViewController;
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLoginController;
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLogoutController;
+use App\Http\Controllers\Web\Applicant\Dashboard\DisplayDashboardViewController;
 use App\Http\Controllers\Web\Applicant\ProfileManagement\DisplayProfileViewController;
 use App\Http\Controllers\Web\Applicant\ProfileManagement\ProcessUpdateProfileController;
 use App\Http\Controllers\Web\Applicant\UploadManagement\DisplayUploadDocumentViewController;
@@ -39,5 +43,12 @@ Route::group(['middleware' => 'auth:applicant'], function() {
 
     Route::group(['prefix' => 'application-processing'], function() {
         Route::get('/', [DisplayApplicationProcessingViewController::class, 'handle'])->name('applicant.application-processing.display-application-processing-form');
+        Route::post('/', [ProcessApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-application-processing-form');
+        Route::post('/submit', [ProcessSubmitApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-submit-application-processing-form');
+        Route::delete('/{id}', [ProcessDeleteApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-delete-application-processing');
+    });
+
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::get('/', [DisplayDashboardViewController::class, 'handle'])->name('applicant.dashboard.display-dashboard-view');
     });
 });

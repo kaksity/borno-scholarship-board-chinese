@@ -22,6 +22,8 @@ class CreateApplicantsTable extends Migration
             $table->string('phone_number');
             $table->string('year')->nullable();
             $table->string('status')->default('active');
+            $table->boolean('has_passed_grade_point')->default(false);
+            $table->decimal('earned_grades')->default(0);
             $table->string('tracking_code')->nullable();
             $table->dateTime('verified_at')->nullable();
             $table->rememberToken();
