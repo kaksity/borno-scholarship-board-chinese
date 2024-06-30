@@ -15,4 +15,15 @@ class ApplicantVerificationActions
     {
         return $this->applicantVerification->create($data);
     }
+
+    public function deleteApplicantAuthenticationVerificationRecords($deleteApplicantAuthenticationVerificationOptions)
+    {
+        $applicantId = $deleteApplicantAuthenticationVerificationOptions['applicant_id'];
+        $purpose = $deleteApplicantAuthenticationVerificationOptions['purpose'];
+
+        $this->applicantVerification->where([
+            'applicant_id' => $applicantId,
+            'purpose' =>$purpose
+        ])->delete();
+    }
 }
