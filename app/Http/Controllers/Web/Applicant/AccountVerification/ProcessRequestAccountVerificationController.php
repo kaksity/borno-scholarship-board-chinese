@@ -8,6 +8,7 @@ use App\Actions\ApplicantVerificationActions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Applicant\Onboarding\ProcessApplicantRegistrationRequest;
 use App\Mail\AccountVerificationMail;
+use App\Mail\ApplicantAccountVerificationMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,13 +46,13 @@ class ProcessRequestAccountVerificationController extends Controller
                 'expires_at' => Carbon::now()->addMinutes(30),
                 'token' => $token
             ]);
-        });
 
-        // Mail::to($loggedInApplicant)->later(now()->addSeconds(5), new AccountVerificationMail([
-        //     'surname' => $loggedInApplicant->surname,
-        //     'other_names' => $loggedInApplicant->other_names,
-        //     'token' => $token
-        // ]));
+            Mail::to($loggedInApplicant)->later(now()->addSeconds(5), new ApplicantAccountVerificationMail([
+                'surname' => $loggedInApplicant->surname,
+                'other_names' => $loggedInApplicant->other_names,
+                'token' => $token
+            ]));
+        });
 
         return back()->with('success', "Account verification mail has been sent to your mail $loggedInApplicant->email");
     }

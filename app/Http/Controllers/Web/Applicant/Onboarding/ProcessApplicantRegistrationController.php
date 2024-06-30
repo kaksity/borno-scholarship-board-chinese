@@ -8,6 +8,7 @@ use App\Actions\ApplicantVerificationActions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Applicant\Onboarding\ProcessApplicantRegistrationRequest;
 use App\Mail\AccountVerificationMail;
+use App\Mail\ApplicantAccountVerificationMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,29 +52,27 @@ class ProcessApplicantRegistrationController extends Controller
                 'applicant_id' => $applicant->id
             ]);
 
-            return $applicant;
+
+            $token = Str::random(200);
+
+            $this->applicantVerificationActions->createApplicantVerificationRecord([
+                'applicant_id' => $applicant->id,
+                'expires_at' => Carbon::now()->addMinutes(30),
+                'token' => $token
+            ]);
+
+            Mail::to($applicant)->later(now()->addSeconds(5), new ApplicantAccountVerificationMail([
+                'surname' => $applicant->surname,
+                'other_names' => $applicant->other_names,
+                'token' => $token
+            ]));
+
         });
 
         auth('applicant')->attempt([
             'email' => $request->email,
             'password' => $request->password
         ]);
-
-        $loggedInApplicant = auth('applicant')->user();
-
-        $token = Str::random(200);
-
-        $this->applicantVerificationActions->createApplicantVerificationRecord([
-            'applicant_id' => $loggedInApplicant->id,
-            'expires_at' => Carbon::now()->addMinutes(30),
-            'token' => $token
-        ]);
-
-        // Mail::to($loggedInApplicant)->later(now()->addSeconds(5), new AccountVerificationMail([
-        //     'surname' => $loggedInApplicant->surname,
-        //     'other_names' => $loggedInApplicant->other_names,
-        //     'token' => $token
-        // ]));
 
         return redirect()->route('applicant.profile-management.display-profile-form');
     }

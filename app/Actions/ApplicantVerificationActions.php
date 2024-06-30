@@ -16,6 +16,16 @@ class ApplicantVerificationActions
         return $this->applicantVerification->create($data);
     }
 
+    public function getDistinctApplicantVerificationRecord($getDistinctApplicantVerificationOptions)
+    {
+        $purpose = $getDistinctApplicantVerificationOptions['purpose'];
+        $token = $getDistinctApplicantVerificationOptions['token'];
+
+        return $this->applicantVerification->where([
+            'purpose' =>$purpose,
+            'token' => $token
+        ])->first();
+    }
     public function deleteApplicantAuthenticationVerificationRecords($deleteApplicantAuthenticationVerificationOptions)
     {
         $applicantId = $deleteApplicantAuthenticationVerificationOptions['applicant_id'];

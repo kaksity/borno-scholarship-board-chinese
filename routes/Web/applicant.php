@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessRequestAccountVerificationController;
+use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessVerifyAccountVerificationController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayApplicationProcessingViewController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessApplicationProcessingController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessDeleteApplicationProcessingController;
@@ -57,5 +58,6 @@ Route::group(['middleware' => ['auth:applicant']], function() {
 
     Route::group(['prefix' => 'account-verification'], function() {
         Route::post('/request', [ProcessRequestAccountVerificationController::class, 'handle'])->name('applicant.account-verification.process-request-account-verification-mail');
+        Route::get('/verify/{id}', [ProcessVerifyAccountVerificationController::class, 'handle'])->name('applicant.account-verification.process-verify-account-verification-mail')->withoutMiddleware('enforceApplicantAccountVerification');
     });
 })->middleware(EnforceApplicantAccountVerification::class);

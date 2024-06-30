@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AccountVerificationMail extends Mailable
+class ApplicantAccountVerificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -37,7 +37,7 @@ class AccountVerificationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.verify-email',
+            view: 'emails.verify-applicant-account.blade',
             with: [
                 'fullName' => $this->data['surname'].' '.$this->data['other_names'],
                 'token' => $this->data['token'],
