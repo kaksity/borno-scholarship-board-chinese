@@ -40,18 +40,12 @@ class RemitaServiceTypeActions
     public function getRemitaServiceTypeFiltered($getRemitaServiceTypeFilterOptions, $relationships = [])
     {
         $programme = $getRemitaServiceTypeFilterOptions['programme'] ?? null;
-        $isForeign = $getRemitaServiceTypeFilterOptions['is_foreign'] ?? null;
 
         return $this->remitaServiceType->with(
             $relationships
         )->when($programme, function($model, $programme) {
             $model->where([
                 'programme' => $programme
-            ]);
-        })->when($isForeign, function ($model, $isForeign) {
-            dd($isForeign);
-            $model->where([
-                'is_foreign' => $isForeign
             ]);
         })->get();
     }

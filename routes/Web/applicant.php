@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Web\Applicant\ApplicationPayment\DisplayApplicationPaymentViewController;
 use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessRequestAccountVerificationController;
 use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessVerifyAccountVerificationController;
+use App\Http\Controllers\Web\Applicant\ApplicationPayment\ProcessApplicationPaymentController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayApplicationProcessingViewController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessApplicationProcessingController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessDeleteApplicationProcessingController;
@@ -39,7 +41,7 @@ Route::group(['prefix' => 'reset-password'], function() {
 });
 
 Route::group(['middleware' => ['auth:applicant']], function() {
-    Route::group(['middleware' => [ 'enforceApplicantAccountVerification']], function() {
+    Route::group(['middleware' => [ 'enforceApplicantAccountVerification', 'enforceApplicationPayment']], function() {
         Route::group(['prefix' => 'profile-management'], function() {
             Route::get('/', [DisplayProfileViewController::class, 'handle'])->name('applicant.profile-management.display-profile-form');
             Route::post('/', [ProcessUpdateProfileController::class, 'handle'])->name('applicant.profile-management.process-profile-form');
@@ -66,5 +68,10 @@ Route::group(['middleware' => ['auth:applicant']], function() {
     Route::group(['prefix' => 'account-verification'], function() {
         Route::post('/request', [ProcessRequestAccountVerificationController::class, 'handle'])->name('applicant.account-verification.process-request-account-verification-mail');
         Route::get('/verify/{id}', [ProcessVerifyAccountVerificationController::class, 'handle'])->name('applicant.account-verification.process-verify-account-verification-mail')->withoutMiddleware('enforceApplicantAccountVerification');
+    });
+
+    Route::group(['prefix' => 'application-payment'], function() {
+        Route::get('/', [DisplayApplicationPaymentViewController::class, 'handle'])->name('applicant.application-payment.display-application-payment');
+        Route::post('/', [ProcessApplicationPaymentController::class, 'handle'])->name('applicant.application-payment.process-application-payment');
     });
 })->middleware(EnforceApplicantAccountVerification::class);
