@@ -32,7 +32,7 @@ Route::group(['prefix' => 'register'], function() {
 Route::group(['prefix' => 'authentication'], function () {
     Route::get('/login', [DisplayLoginViewController::class, 'handle'])->name('applicant.authentication.login.display-login-form');
     Route::post('/login', [ProcessApplicantLoginController::class, 'handle'])->name('applicant.authentication.login.process-login-form');
-    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form');
+    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form')->middleware('auth:applicant');;
 });
 
 Route::group(['prefix' => 'reset-password'], function() {

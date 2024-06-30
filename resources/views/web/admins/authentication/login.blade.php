@@ -44,8 +44,8 @@
         </div>
     </form>
 </div>
-{{-- <div class="text-center mb-3">
+<div class="text-center mb-3">
     Forgot your password? <a href="{{ route('admin.reset-password.display-reset-password-form') }}">Reset Password</a>
-</div> --}}
+</div>
 
 @endsection
