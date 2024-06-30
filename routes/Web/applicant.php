@@ -12,6 +12,8 @@ use App\Http\Controllers\Web\Applicant\Authentication\DisplayLoginViewController
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLoginController;
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLogoutController;
 use App\Http\Controllers\Web\Applicant\Dashboard\DisplayDashboardViewController;
+use App\Http\Controllers\Web\Applicant\PasswordManagement\ResetPassword\DisplayResetPasswordViewController;
+use App\Http\Controllers\Web\Applicant\PasswordManagement\ResetPassword\ProcessResetPasswordController;
 use App\Http\Controllers\Web\Applicant\ProfileManagement\DisplayProfileViewController;
 use App\Http\Controllers\Web\Applicant\ProfileManagement\ProcessUpdateProfileController;
 use App\Http\Controllers\Web\Applicant\UploadManagement\DisplayUploadDocumentViewController;
@@ -29,6 +31,11 @@ Route::group(['prefix' => 'authentication'], function () {
     Route::get('/login', [DisplayLoginViewController::class, 'handle'])->name('applicant.authentication.login.display-login-form');
     Route::post('/login', [ProcessApplicantLoginController::class, 'handle'])->name('applicant.authentication.login.process-login-form');
     Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form');
+});
+
+Route::group(['prefix' => 'reset-password'], function() {
+    Route::get('/', [DisplayResetPasswordViewController::class, 'handle'])->name('applicant.reset-password.display-reset-password-form');
+    Route::post('/', [ProcessResetPasswordController::class, 'handle'])->name('applicant.reset-password.process-reset-password-form');
 });
 
 Route::group(['middleware' => ['auth:applicant']], function() {

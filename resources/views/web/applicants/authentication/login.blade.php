@@ -48,7 +48,7 @@
     Don't have an account? <a href="{{ route('applicant.register.display-register-form') }}">Create an Account</a>
 </div>
 <div class="text-center mb-3">
-    Forgot your password? <a href="#">Reset Password</a>
+    Forgot your password? <a href="{{ route('applicant.reset-password.display-reset-password-form') }}">Reset Password</a>
 </div>
 
 @endsection

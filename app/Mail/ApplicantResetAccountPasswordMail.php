@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendResetPasswordMail extends Mailable
+class ApplicantResetAccountPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -37,7 +37,7 @@ class SendResetPasswordMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.request-password-change',
+            view: 'emails.send-applicant-reset-password.blade',
             with: [
                 'fullName' => $this->data['surname'].' '.$this->data['other_names'],
                 'password' => $this->data['password'],
