@@ -14,9 +14,9 @@
                     <span class="text-dark">Account Management</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('applicant.change-password.display-change-password-form') }}"><i class="align-middle me-1" data-feather="user"></i>Change Password</a>
+                    <a class="dropdown-item" href="{{ route('admin.change-password.display-change-password-form') }}"><i class="align-middle me-1" data-feather="user"></i>Change Password</a>
                     <div class="dropdown-divider"></div>
-                    <form action="{{ route('applicant.authentication.login.process-logout-form') }}" method="post">
+                    <form action="{{ route('admin.authentication.login.process-logout-form') }}" method="post">
                         @csrf
                         <input class="dropdown-item" type="submit" value="Logout">
                     </form>

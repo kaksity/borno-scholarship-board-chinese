@@ -14,6 +14,8 @@ use App\Http\Controllers\Web\Applicant\Authentication\DisplayLoginViewController
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLoginController;
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLogoutController;
 use App\Http\Controllers\Web\Applicant\Dashboard\DisplayDashboardViewController;
+use App\Http\Controllers\Web\Applicant\PasswordManagement\ChangePassword\DisplayChangePasswordViewController;
+use App\Http\Controllers\Web\Applicant\PasswordManagement\ChangePassword\ProcessChangePasswordController;
 use App\Http\Controllers\Web\Applicant\PasswordManagement\ResetPassword\DisplayResetPasswordViewController;
 use App\Http\Controllers\Web\Applicant\PasswordManagement\ResetPassword\ProcessResetPasswordController;
 use App\Http\Controllers\Web\Applicant\ProfileManagement\DisplayProfileViewController;
@@ -32,7 +34,7 @@ Route::group(['prefix' => 'register'], function() {
 Route::group(['prefix' => 'authentication'], function () {
     Route::get('/login', [DisplayLoginViewController::class, 'handle'])->name('applicant.authentication.login.display-login-form');
     Route::post('/login', [ProcessApplicantLoginController::class, 'handle'])->name('applicant.authentication.login.process-login-form');
-    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form');
+    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form')->middleware('auth:applicant');;
 });
 
 Route::group(['prefix' => 'reset-password'], function() {
@@ -58,6 +60,11 @@ Route::group(['middleware' => ['auth:applicant']], function() {
             Route::post('/', [ProcessApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-application-processing-form');
             Route::post('/submit', [ProcessSubmitApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-submit-application-processing-form');
             Route::delete('/{id}', [ProcessDeleteApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-delete-application-processing');
+        });
+
+        Route::group(['prefix' => 'change-password'], function() {
+            Route::get('/', [DisplayChangePasswordViewController::class, 'handle'])->name('applicant.change-password.display-change-password-form');
+            Route::post('/', [ProcessChangePasswordController::class, 'handle'])->name('applicant.change-password.process-change-password-form');
         });
     });
 
