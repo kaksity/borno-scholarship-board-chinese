@@ -8,24 +8,10 @@
             <li class="sidebar-header">
                 Application
             </li>
-
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('applicant.profile-management.display-profile-form') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                <a class="sidebar-link" href="{{ route('admin.application-management.display-application-management') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Applications</span>
                 </a>
             </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('applicant.upload-management.display-upload-document-form') }}">
-                    <i class="align-middle" data-feather="upload-cloud"></i> <span class="align-middle">Uploads</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('applicant.application-processing.display-application-processing-form') }}">
-                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Application</span>
-                </a>
-            </li>
-
     </div>
 </nav>
