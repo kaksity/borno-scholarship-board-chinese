@@ -33,5 +33,10 @@
                 </a>
             </li>
 
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('applicant.application-processing.display-preview-application-processing-form') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Preview</span>
+                </a>
+            </li>
     </div>
 </nav>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessRequestAccount
 use App\Http\Controllers\Web\Applicant\AccountVerification\ProcessVerifyAccountVerificationController;
 use App\Http\Controllers\Web\Applicant\ApplicationPayment\ProcessApplicationPaymentController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayApplicationProcessingViewController;
+use App\Http\Controllers\Web\Applicant\ApplicationProcessing\DisplayPreviewApplicationProcessingViewController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessApplicationProcessingController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessDeleteApplicationProcessingController;
 use App\Http\Controllers\Web\Applicant\ApplicationProcessing\ProcessSubmitApplicationProcessingController;
@@ -65,6 +66,7 @@ Route::group(['middleware' => ['auth:applicant']], function() {
         Route::group(['prefix' => 'application-processing'], function() {
             Route::get('/', [DisplayApplicationProcessingViewController::class, 'handle'])->name('applicant.application-processing.display-application-processing-form');
             Route::post('/', [ProcessApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-application-processing-form');
+            Route::get('/preview', [DisplayPreviewApplicationProcessingViewController::class, 'handle'])->name('applicant.application-processing.display-preview-application-processing-form');
             Route::post('/submit', [ProcessSubmitApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-submit-application-processing-form');
             Route::delete('/{id}', [ProcessDeleteApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-delete-application-processing');
         });

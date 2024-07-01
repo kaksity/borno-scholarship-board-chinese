@@ -24,5 +24,10 @@ class Applicant extends AbstractAuthenticatableModel
     {
         return $this->hasMany(ApplicantUploadedDocumentData::class, 'applicant_id');
     }
+
+    public function applicantSubjectData()
+    {
+        return $this->hasMany(ApplicantSubjectData::class, 'applicant_id');
+    }
 }
 

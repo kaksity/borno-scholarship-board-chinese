@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Web\Applicant\ApplicationProcessing;
 
 use App\Actions\ApplicantActions;
 use App\Actions\ApplicantSubjectDataActions;
+use App\Actions\ApplicantUploadedDocumentDataActions;
 use App\Actions\CourseOfStudyActions;
+use App\Actions\DocumentTypeActions;
 use App\Actions\SubjectActions;
 use App\Http\Controllers\Controller;
 
@@ -12,6 +14,8 @@ class ProcessSubmitApplicationProcessingController extends Controller
 {
     public function __construct(
         private ApplicantSubjectDataActions $applicantSubjectDataActions,
+        private ApplicantUploadedDocumentDataActions $applicantUploadedDocumentDataActions,
+        private DocumentTypeActions $documentTypeActions,
         private ApplicantActions $applicantActions,
         private SubjectActions $subjectActions,
         private CourseOfStudyActions $courseOfStudyActions,
@@ -43,7 +47,17 @@ class ProcessSubmitApplicationProcessingController extends Controller
         );
 
         if(count($subjects) != count($applicantSubjectData)) {
-            return back()->with('error', 'All subject grades have to be provided');
+            return redirect()->route('applicant.application-processing.display-application-processing-form')->with('error', 'All subject grades have to be provided');
+        }
+
+        $applicantUploadedData = $this->applicantUploadedDocumentDataActions->getApplicantUploadedDocumentDataFiltered([
+            'applicant_id' => $loggedInApplicant->id
+        ]);
+
+        $documentTypes = $this->documentTypeActions->listDocumentTypes();
+
+        if(count($applicantUploadedData) != count($documentTypes)) {
+            return redirect()->route('applicant.upload-management.display-upload-document-form')->with('error', 'All specified documents must be uploaded');
         }
 
         $totalPointsEarned = 0;

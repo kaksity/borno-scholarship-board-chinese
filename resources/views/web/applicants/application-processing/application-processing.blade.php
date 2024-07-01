@@ -100,13 +100,7 @@
                     </table>
                 </div>
                 <div class="mt-3">
-                    <div>
-                        <p>Contract Clause</p>
-                    </div>
-                    <form action="{{ route('applicant.application-processing.process-submit-application-processing-form') }}" method="post">
-                        @csrf
-                        <input type="submit" value="Submit Application" class="btn btn-primary" @if($applicant->status == 'Submitted') disabled @endif>
-                    </form>
+                    <a href="{{ route('applicant.application-processing.display-preview-application-processing-form') }}" class="btn btn-primary">Preview Application</a>
                 </div>
             </div>
         </div>

@@ -15,6 +15,11 @@
                     {{ session('success') }}
                 </div>
                 @endif
+                @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <form action="{{ route('applicant.upload-management.process-upload-document-form') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row mb-2">
