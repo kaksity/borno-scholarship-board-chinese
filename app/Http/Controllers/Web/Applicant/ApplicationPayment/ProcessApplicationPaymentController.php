@@ -93,6 +93,7 @@ class ProcessApplicationPaymentController extends Controller
                 'hash' => $paymentHash,
                 'merchant_id' => $remitaConfigurations['merchant_id'],
                 'public_key' => $remitaConfigurations['public_key'],
+                'remita_url' => $remitaConfigurations['url'],
                 'transaction_status' => $applicantPaymentData->status,
                 'api_verification_hash' => $apiVerificationHash,
             ];

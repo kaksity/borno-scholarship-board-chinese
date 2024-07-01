@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('remita_service_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('programme');
-            $table->decimal('amount');
+            $table->integer('amount');
             $table->string('value');
             $table->softDeletes();
             $table->timestamps();
