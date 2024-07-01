@@ -10,6 +10,12 @@
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('applicant.dashboard.display-dashboard-view') }}">
+                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('applicant.profile-management.display-profile-form') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                 </a>
@@ -35,7 +41,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('applicant.application-processing.display-preview-application-processing-form') }}">
-                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Preview</span>
+                    <i class="align-middle" data-feather="eye"></i> <span class="align-middle">Preview</span>
                 </a>
             </li>
     </div>

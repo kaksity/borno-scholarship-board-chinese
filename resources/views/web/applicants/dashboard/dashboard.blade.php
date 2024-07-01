@@ -29,7 +29,7 @@
     <div class="card-boyd">
         <div class="p-4">
             <div>
-                <h4>Application Status Update</h4>
+                <h4>Application Status Update @if($applicant->has_passed_grade_point == true) <i class="align-middle text-success" data-feather="check"></i> @else <i class="align-middle text-danger" data-feather="x"></i> @endif </h4>
             </div>
             @if($applicant->has_passed_grade_point == true)
             <div>
