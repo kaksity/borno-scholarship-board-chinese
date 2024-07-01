@@ -21,8 +21,8 @@ class ProcessUpdateProfileController extends Controller
     {
         $loggedInApplicant = auth('applicant')->user();
 
-        $updateApplicantBioDataRequestOptions = $request->except('_token', 'phone_number');
-        $updateApplicantRequestOptions = $request->only('phone_number');
+        $updateApplicantBioDataRequestOptions = $request->except('_token', 'phone_number', 'candidate_number');
+        $updateApplicantRequestOptions = $request->only('phone_number', 'candidate_number');
 
         DB::transaction(function () use (
             $updateApplicantBioDataRequestOptions,
@@ -43,6 +43,6 @@ class ProcessUpdateProfileController extends Controller
             );
         });
 
-        return redirect()->route('applicant.upload-management.display-upload-document-form');
+        return redirect()->route('applicant.passport-management.display-passport-form');
     }
 }

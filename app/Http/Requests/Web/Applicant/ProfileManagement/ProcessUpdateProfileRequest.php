@@ -11,7 +11,8 @@ class ProcessUpdateProfileRequest extends FormRequest
     {
         return [
             'phone_number' => ['required', 'digits:11'],
-            'nin' => ['nullable', 'digits:11', Rule::unique('applicant_bio_data', 'nin')->ignore($this->user()->id, 'applicant_id')],
+            'nin' => ['required', 'digits:11', Rule::unique('applicant_bio_data', 'nin')->ignore($this->user()->id, 'applicant_id')],
+            'candidate_number' => ['required', 'string'],
             'date_of_birth' => ['required', 'date', 'date_format:Y-m-d'],
             'contact_address' => ['required', 'between:3,200'],
             'lga_id' => ['required', 'uuid'],
@@ -24,8 +25,10 @@ class ProcessUpdateProfileRequest extends FormRequest
     public function messages()
     {
         return [
+            'candidate_number.required' =>  'Candidate WAEC Number is required',
             'phone_number.required' => 'Phone Number is required',
             'phone_number.digits' => 'Phone Number must be 11 digits',
+            'nin.required' => 'NIN is required',
             'nin.digits' => 'NIN must be 11 digits',
             'nin.unique' => 'NIN has already been used',
             'date_of_birth.required' => 'Date of Birth is required',

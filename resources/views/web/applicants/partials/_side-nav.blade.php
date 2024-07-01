@@ -16,6 +16,12 @@
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('applicant.passport-management.display-passport-form') }}">
+                    <i class="align-middle" data-feather="camera"></i> <span class="align-middle">Passport</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('applicant.upload-management.display-upload-document-form') }}">
                     <i class="align-middle" data-feather="upload-cloud"></i> <span class="align-middle">Uploads</span>
                 </a>

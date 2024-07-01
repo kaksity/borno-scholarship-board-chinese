@@ -18,6 +18,7 @@ class ProcessApplicantRegistrationRequest extends FormRequest
             'other_names' => ['required', 'between:3,150'],
             'email' => ['required', 'between:3,150', 'email'],
             'year' => ['required', 'string'],
+            'course_of_study_id' => ['required', 'uuid'],
             'phone_number' => ['required', 'string', 'between:10,20'],
             'password' => ['required', 'between:8,20', 'confirmed'],
         ];
@@ -39,6 +40,8 @@ class ProcessApplicantRegistrationRequest extends FormRequest
             'phone_number.required' =>  'Phone number is required',
             'phone_number.between' =>  'Phone number must be between 10 to 20 characters',
             'year.required' =>  'Year of WAEC is required',
+            'course_of_study_id.required' => 'Course of study is required',
+            'course_of_study_id.uuid' => 'Course of study is not valid',
         ];
     }
 }

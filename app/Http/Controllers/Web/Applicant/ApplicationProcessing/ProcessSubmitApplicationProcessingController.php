@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Applicant\ApplicationProcessing;
 
 use App\Actions\ApplicantActions;
 use App\Actions\ApplicantSubjectDataActions;
+use App\Actions\CourseOfStudyActions;
 use App\Actions\SubjectActions;
 use App\Http\Controllers\Controller;
 
@@ -13,6 +14,7 @@ class ProcessSubmitApplicationProcessingController extends Controller
         private ApplicantSubjectDataActions $applicantSubjectDataActions,
         private ApplicantActions $applicantActions,
         private SubjectActions $subjectActions,
+        private CourseOfStudyActions $courseOfStudyActions,
     )
     {}
 
@@ -52,7 +54,9 @@ class ProcessSubmitApplicationProcessingController extends Controller
 
         $totalPointsEarned = $totalPointsEarned / count($subjects);
 
-        $gradePointLimit = env('GRADE_POINT_LIMIT');
+        $courseOfStudy = $this->courseOfStudyActions->getCourseOfStudyById($loggedInApplicant->course_of_study_id);
+
+        $gradePointLimit = $courseOfStudy->minimum_points;
 
         $updateApplicantRecordOptions['status'] = 'Submitted';
         $updateApplicantRecordOptions['has_passed_grade_point'] = $totalPointsEarned > $gradePointLimit ? true : false;

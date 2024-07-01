@@ -52,10 +52,37 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label class="form-label">Course Of Study</label>
+            <select class="form-select mb-3" name="course_of_study_id">
+                @foreach ($courseOfStudies as $courseOfStudy)
+                <option
+                    value="{{ $courseOfStudy->id }}"
+                    @if($courseOfStudy->id == old('course_of_study_id'))
+                        selected
+                    @endif
+                >
+                    {{ $courseOfStudy->name }}
+                </option>
+                @endforeach
+            </select>
+            @error('course_of_study_id')
+            <div class="text-danger">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label class="form-label">Year of WAEC</label>
             <select class="form-select mb-3" name="year">
                 @foreach ($years as $year)
-                <option value="{{ $year }}">{{ $year }}</option>
+                <option
+                    value="{{ $year }}"
+                    @if($year == old('year'))
+                        selected
+                    @endif
+                >
+                    {{ $year }}
+                </option>
                 @endforeach
             </select>
             @error('year')

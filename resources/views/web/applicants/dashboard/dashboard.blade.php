@@ -39,7 +39,7 @@
             @else
             <div>
                 <p class="text">
-                    We regret to inform you that your application, which earned {{ $applicant->earned_grades }} points, did not meet the required criteria of {{ $gradePointLimit }} points. Thank you for your interest and effort. We encourage you to apply again in the future.
+                    We regret to inform you that your application, which earned {{ $applicant->earned_grades }} points, did not meet the required criteria points. Thank you for your interest and effort. We encourage you to apply again in the future.
                 </p>
             </div>
             @endif

@@ -14,6 +14,8 @@ use App\Http\Controllers\Web\Applicant\Authentication\DisplayLoginViewController
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLoginController;
 use App\Http\Controllers\Web\Applicant\Authentication\ProcessApplicantLogoutController;
 use App\Http\Controllers\Web\Applicant\Dashboard\DisplayDashboardViewController;
+use App\Http\Controllers\Web\Applicant\PassportManagement\DisplayPassportViewController;
+use App\Http\Controllers\Web\Applicant\PassportManagement\ProcessUploadPassportController;
 use App\Http\Controllers\Web\Applicant\PasswordManagement\ChangePassword\DisplayChangePasswordViewController;
 use App\Http\Controllers\Web\Applicant\PasswordManagement\ChangePassword\ProcessChangePasswordController;
 use App\Http\Controllers\Web\Applicant\PasswordManagement\ResetPassword\DisplayResetPasswordViewController;
@@ -47,6 +49,11 @@ Route::group(['middleware' => ['auth:applicant']], function() {
         Route::group(['prefix' => 'profile-management'], function() {
             Route::get('/', [DisplayProfileViewController::class, 'handle'])->name('applicant.profile-management.display-profile-form');
             Route::post('/', [ProcessUpdateProfileController::class, 'handle'])->name('applicant.profile-management.process-profile-form');
+        });
+
+        Route::group(['prefix' => 'passport-management'], function() {
+            Route::get('/', [DisplayPassportViewController::class, 'handle'])->name('applicant.passport-management.display-passport-form');
+            Route::post('/', [ProcessUploadPassportController::class, 'handle'])->name('applicant.passport-management.process-upload-passport-form');
         });
 
         Route::group(['prefix' => 'upload-management'], function() {

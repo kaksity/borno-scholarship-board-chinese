@@ -100,6 +100,17 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <label for="nin" class="col-form-label">Candidate WAEC Number</label>
+                            <div>
+                                <input type="text" class="form-control form-control-lg" value="{{ $applicant?->candidate_number ?? old('candidate_number') }}" name="candidate_number" placeholder="Candidate WAEC Number">
+                                @error('candidate_number')
+                                <div class="p-1 text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group row mb-2">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
