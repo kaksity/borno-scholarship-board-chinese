@@ -141,7 +141,6 @@
                                     <tr>
                                         <th>Subject</th>
                                         <th>Grade</th>
-                                        <th>Percentage Earned</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,7 +148,6 @@
                                     <tr>
                                         <td>{{ $applicantSubject->subject->name }}</td>
                                         <td>{{ $applicantSubject->grade->name }}</td>
-                                        <td>{{ $applicantSubject->grade->grade }}</td>
                                     </tr>
                                     @endforeach
                                     <tr>

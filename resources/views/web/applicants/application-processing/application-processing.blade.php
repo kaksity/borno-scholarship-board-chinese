@@ -73,7 +73,6 @@
                             <tr>
                                 <th>Subject</th>
                                 <th>Grade</th>
-                                <th>Percentage Earned</th>
                                 @if($applicant->status == 'Applying')
                                 <th>Action</th>
                                 @endif
@@ -84,7 +83,6 @@
                             <tr>
                                 <td>{{ $applicantSubject->subject->name }}</td>
                                 <td>{{ $applicantSubject->grade->name }}</td>
-                                <td>{{ $applicantSubject->grade->grade }}</td>
                                 @if($applicant->status == 'Applying')
                                 <td>
                                     <form action="{{ route('applicant.application-processing.process-delete-application-processing', [$applicantSubject->id]) }}" method="POST">
