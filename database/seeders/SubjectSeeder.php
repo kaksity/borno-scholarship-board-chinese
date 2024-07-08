@@ -20,6 +20,9 @@ class SubjectSeeder extends Seeder
             ['name' => 'Physics'],
             ['name' => 'Chemistry'],
             ['name' => 'Biology'],
+            ['name' => 'Literature'],
+            ['name' => 'Government'],
+            ['name' => 'Hausa'],
         ];
 
         DB::transaction(function () use ($subjects) {

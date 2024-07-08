@@ -17,7 +17,6 @@ class ProcessSubmitApplicationProcessingController extends Controller
         private ApplicantUploadedDocumentDataActions $applicantUploadedDocumentDataActions,
         private DocumentTypeActions $documentTypeActions,
         private ApplicantActions $applicantActions,
-        private SubjectActions $subjectActions,
         private CourseOfStudyActions $courseOfStudyActions,
     )
     {}
@@ -35,11 +34,17 @@ class ProcessSubmitApplicationProcessingController extends Controller
         ];
 
         $relationships = [
+            'subjects'
+        ];
+
+        $courseOfStudy = $this->courseOfStudyActions->getCourseOfStudyById($loggedInApplicant->course_of_study_id, $relationships);
+
+        $subjects = $courseOfStudy->subjects;
+
+        $relationships = [
             'subject',
             'grade'
         ];
-
-        $subjects = $this->subjectActions->listSubjects();
 
         $applicantSubjectData = $this->applicantSubjectDataActions->getApplicantSubjectDataFiltered(
             $getApplicantSubjectFilterOptions,
@@ -67,8 +72,6 @@ class ProcessSubmitApplicationProcessingController extends Controller
         }
 
         $totalPointsEarned = $totalPointsEarned / count($subjects);
-
-        $courseOfStudy = $this->courseOfStudyActions->getCourseOfStudyById($loggedInApplicant->course_of_study_id);
 
         $gradePointLimit = $courseOfStudy->minimum_points;
 

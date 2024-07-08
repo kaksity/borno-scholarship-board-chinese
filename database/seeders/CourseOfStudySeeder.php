@@ -23,6 +23,10 @@ class CourseOfStudySeeder extends Seeder
                 'name' => 'Medicine',
                 'minimum_points' => 75
             ],
+            [
+                'name' => 'Chinese Language',
+                'minimum_points' => 60
+            ],
         ];
 
         DB::transaction(function () use ($courseOfStudies) {

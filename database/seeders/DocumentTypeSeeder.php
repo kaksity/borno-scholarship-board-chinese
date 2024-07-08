@@ -15,14 +15,10 @@ class DocumentTypeSeeder extends Seeder
     public function run(): void
     {
         $documentTypes = [
-            ['name' => 'Primary School Leaving Certificate'],
-            ['name' => 'Secondary School Certificate Examinations'],
-            ['name' => 'Diploma'],
-            ['name' => 'Higher National Diploma'],
-            ['name' => 'Admission Letter'],
-            ['name' => 'ID Card'],
-            ['name' => 'Payment Receipt'],
             ['name' => 'Indigene Letter'],
+            ['name' => 'National ID Card'],
+            ['name' => 'Primary School Leaving Certificate'],
+            ['name' => 'WAEC']
         ];
 
         DB::transaction(function() use($documentTypes) {

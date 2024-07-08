@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Web\Applicant\ApplicationProcessing;
 
 use App\Actions\ApplicantSubjectDataActions;
+use App\Actions\CourseOfStudyActions;
 use App\Actions\GradeActions;
-use App\Actions\SubjectActions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DisplayApplicationProcessingViewController extends Controller
 {
     public function __construct(
-        private SubjectActions $subjectActions,
+        private CourseOfStudyActions $courseOfStudyActions,
         private ApplicantSubjectDataActions $applicantSubjectDataActions,
         private GradeActions $gradeActions,
     )
@@ -19,14 +19,21 @@ class DisplayApplicationProcessingViewController extends Controller
 
     public function handle()
     {
+        $loggedInApplicant = auth('applicant')->user();
+
+        $relationships = [
+            'subjects'
+        ];
+
+        $courseOfStudy =$this->courseOfStudyActions->getCourseOfStudyById($loggedInApplicant->course_of_study_id);
+
         $grades = $this->gradeActions->listGrades();
-        $subjects = $this->subjectActions->listSubjects();
+        $subjects = $courseOfStudy->subjects;
+
         $relationships = [
             'subject',
             'grade'
         ];
-
-        $loggedInApplicant = auth('applicant')->user();
 
         $getApplicantSubjectFilterOptions = [
             'applicant_id' => $loggedInApplicant->id

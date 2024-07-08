@@ -47,11 +47,14 @@ class ProcessRequestAccountVerificationController extends Controller
                 'token' => $token
             ]);
 
-            Mail::to($loggedInApplicant)->later(now()->addSeconds(5), new ApplicantAccountVerificationMail([
+            $mail = new ApplicantAccountVerificationMail([
                 'surname' => $loggedInApplicant->surname,
                 'other_names' => $loggedInApplicant->other_names,
                 'token' => $token
-            ]));
+            ]);
+
+            Mail::to($loggedInApplicant)->later(now()->addSeconds(5), $mail);
+
         });
 
         return back()->with('success', "Account verification mail has been sent to your mail $loggedInApplicant->email");

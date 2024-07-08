@@ -27,7 +27,7 @@ class ApplicantResetAccountPasswordMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Changed Password Mail',
+            subject: 'Changed Password Mail',
         );
     }
 
@@ -37,7 +37,7 @@ class ApplicantResetAccountPasswordMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.send-applicant-reset-password.blade',
+            view: 'emails.send-applicant-reset-password',
             with: [
                 'fullName' => $this->data['surname'].' '.$this->data['other_names'],
                 'password' => $this->data['password'],

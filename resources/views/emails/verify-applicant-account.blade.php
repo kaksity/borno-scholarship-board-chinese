@@ -487,7 +487,7 @@
                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                                             <tr>
                                                                 <td align="center">
-                                                                    <a href="{{ env('APP_URL').'/applicant/verification/'.$token }}" class="f-fallback button button--green" target="_blank">Click Me</a>
+                                                                    <a href="{{ route('applicant.account-verification.process-verify-account-verification-mail', [$token]) }}" class="f-fallback button button--green" target="_blank">Click Me</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -495,7 +495,7 @@
                                                 </tr>
                                             </table>
                                             <p>
-                                                You can also optionally copy the link below and then paste it your browser. {{ env('APP_URL').'/applicant/verification/'.$token }}
+                                                You can also optionally copy the link below and then paste it your browser. {{ route('applicant.account-verification.process-verify-account-verification-mail', [$token]) }}
                                             </p>
                                             <p>For security, this request was received from an {{$IPAddress}}
                                                 device using {{ $device }}. If you did not request an account verification,

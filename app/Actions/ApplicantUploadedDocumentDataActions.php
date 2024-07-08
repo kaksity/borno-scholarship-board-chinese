@@ -30,6 +30,17 @@ class ApplicantUploadedDocumentDataActions
         ])->first();
     }
 
+    public function getDistinctApplicantUploadedDocument($getDistinctApplicantUploadedDocumentOptions)
+    {
+        $applicantId = $getDistinctApplicantUploadedDocumentOptions['applicant_id'];
+        $documentTypeId = $getDistinctApplicantUploadedDocumentOptions['document_type_id'];
+
+        return $this->applicantUploadedDocumentData->where([
+            'applicant_id' => $applicantId,
+            'document_type_id' => $documentTypeId
+        ])->first();
+    }
+
     public function updateApplicantUploadedDocumentDataRecord($data, $id)
     {
         $this->applicantUploadedDocumentData->where([

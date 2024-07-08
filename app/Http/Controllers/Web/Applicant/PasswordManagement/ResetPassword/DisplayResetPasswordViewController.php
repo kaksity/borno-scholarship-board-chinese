@@ -9,6 +9,6 @@ class DisplayResetPasswordViewController extends Controller
 {
     public function handle()
     {
-        return view('web.applicants.password-management.change-password');
+        return view('web.applicants.password-management.reset-password');
     }
 }

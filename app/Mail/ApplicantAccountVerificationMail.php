@@ -18,7 +18,6 @@ class ApplicantAccountVerificationMail extends Mailable
      */
     public function __construct(private array $data)
     {
-        //
     }
 
     /**
@@ -37,7 +36,7 @@ class ApplicantAccountVerificationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.verify-applicant-account.blade',
+            view: 'emails.verify-applicant-account',
             with: [
                 'fullName' => $this->data['surname'].' '.$this->data['other_names'],
                 'token' => $this->data['token'],

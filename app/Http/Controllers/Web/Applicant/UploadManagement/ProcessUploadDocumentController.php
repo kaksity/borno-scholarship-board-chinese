@@ -18,6 +18,16 @@ class ProcessUploadDocumentController extends Controller
     {
         $loggedInApplicant = auth('applicant')->user();
 
+
+        $existingUploadedDocument = $this->applicantUploadedDocumentDataActions->getDistinctApplicantUploadedDocument([
+            'applicant_id' => $loggedInApplicant->id,
+            'document_type_id' => $request->document_type_id
+        ]);
+
+        if (!is_null($existingUploadedDocument)) {
+            return back()->with('error', 'Applicant document already uploaded');
+        }
+
         $extension = $request->file->getClientOriginalExtension();
         $fileNameToStore = time().uniqid().'.'.$extension;
 

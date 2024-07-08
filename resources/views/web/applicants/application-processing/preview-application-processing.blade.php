@@ -150,11 +150,6 @@
                                         <td>{{ $applicantSubject->grade->name }}</td>
                                     </tr>
                                     @endforeach
-                                    <tr>
-                                        <td>Total Points Earned: </td>
-                                        <td></td>
-                                        <td>{{ $applicant->earned_grades }}</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
