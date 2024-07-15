@@ -74,6 +74,11 @@
 
                     <img src="/public/assets/img/Borno-State-Scholarship.webp" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
                 </div>
+                <div>
+                    <a href="{{ route('applicant.authentication.login.display-login-form') }}" class="btn btn-success px-5 py-2">
+                        <h3 class="text-white">Apply Now</h3>
+                    </a>
+                </div>
             </div>
 
         </section><!-- /Hero Section -->
@@ -190,7 +195,7 @@
                         <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
                             <i class="bi bi-geo-alt"></i>
                             <h3>Address</h3>
-                            <p>Borno state.</p>
+                            <p>Kano-Jos road, Near Musa Usman secretariat. Maiduri, Borno state.</p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -198,7 +203,7 @@
                         <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
                             <i class="bi bi-telephone"></i>
                             <h3>Call Us</h3>
-                            <p></p>
+                            <p>07080000000</p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -219,7 +224,7 @@
                     </div><!-- End Google Maps -->
 
                     <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
+                        <form action="#" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
                             <div class="row gy-4">
 
                                 <div class="col-md-6">
@@ -307,10 +312,6 @@
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">Borno State scholarship board</strong><span>All Rights Reserved</span></p>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
 
             </div>
         </div>
