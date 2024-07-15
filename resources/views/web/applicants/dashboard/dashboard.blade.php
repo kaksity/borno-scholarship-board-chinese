@@ -24,6 +24,17 @@
     </div>
 </div>
 @endif
+
+@if ($applicant->status != 'Submitted' && !is_null($applicant->verified_at))
+<div class="card">
+    <div class="card-body">
+        <div class="p-4">
+            You are yet to submit your application kindly complete all the form and provide all the need information. You can start <a href="{{ route('applicant.profile-management.display-profile-form') }}">here</a>
+        </div>
+    </div>
+</div>
+@endif
+
 @if($applicant->status == 'Submitted')
 <div class="card">
     <div class="card-body">
@@ -46,14 +57,6 @@
         </div>
     </div>
 </div>
-@else
-    <div class="card">
-        <div class="card-body">
-            <div class="p-4">
-                You are yet to submit your application kindly complete all the form and provide all the need information. You can start <a href="{{ route('applicant.profile-management.display-profile-form') }}">here</a>
-            </div>
-        </div>
-    </div>
 @endif
 
 @endsection
