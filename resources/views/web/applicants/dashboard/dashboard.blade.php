@@ -26,7 +26,7 @@
 @endif
 @if($applicant->status == 'Submitted')
 <div class="card">
-    <div class="card-boyd">
+    <div class="card-body">
         <div class="p-4">
             <div>
                 <h4>Application Status Update @if($applicant->has_passed_grade_point == true) <i class="align-middle text-success" data-feather="check"></i> @else <i class="align-middle text-danger" data-feather="x"></i> @endif </h4>
@@ -46,5 +46,14 @@
         </div>
     </div>
 </div>
+@else
+    <div class="card">
+        <div class="card-body">
+            <div class="p-4">
+                You are yet to submit your application kindly complete all the form and provide all the need information. You can start <a href="{{ route('applicant.profile-management.display-profile-form') }}">here</a>
+            </div>
+        </div>
+    </div>
 @endif
+
 @endsection
