@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\CustomApplicantAuthenticationMiddleware;
+use App\Http\Middleware\CustomAuthenticationMiddleware;
 use App\Http\Middleware\Web\EnforceApplicantAccountVerification;
 use App\Http\Middleware\Web\EnforceApplicationPayment;
 use Illuminate\Foundation\Application;
@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'enforceApplicantAccountVerification' => EnforceApplicantAccountVerification::class,
             'enforceApplicationPayment' => EnforceApplicationPayment::class,
-            'auth.custom' => CustomApplicantAuthenticationMiddleware::class,
+            'auth' => CustomAuthenticationMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
