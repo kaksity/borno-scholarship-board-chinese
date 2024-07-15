@@ -17,7 +17,7 @@ class CourseOfStudySeeder extends Seeder
         $courseOfStudies = [
             [
                 'name' => 'Engineering',
-                'minimum_points' => 60
+                'minimum_points' => 65
             ],
             [
                 'name' => 'Medicine',
