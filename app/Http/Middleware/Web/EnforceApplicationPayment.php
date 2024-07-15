@@ -56,7 +56,7 @@ class EnforceApplicationPayment
         }
 
         return redirect()->route(
-            'applicant.applicant-payment-data.index'
+            'applicant.application-payment.display-application-payment'
         )->with('error', 'You must complete the payment step before proceeding');
     }
 }
