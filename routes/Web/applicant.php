@@ -37,7 +37,7 @@ Route::group(['prefix' => 'register'], function() {
 Route::group(['prefix' => 'authentication'], function () {
     Route::get('/login', [DisplayLoginViewController::class, 'handle'])->name('applicant.authentication.login.display-login-form');
     Route::post('/login', [ProcessApplicantLoginController::class, 'handle'])->name('applicant.authentication.login.process-login-form');
-    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form')->middleware('auth:applicant');;
+    Route::post('/logout', [ProcessApplicantLogoutController::class, 'handle'])->name('applicant.authentication.login.process-logout-form')->middleware('auth.custom:applicant');;
 });
 
 Route::group(['prefix' => 'reset-password'], function() {
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'reset-password'], function() {
     Route::post('/', [ProcessResetPasswordController::class, 'handle'])->name('applicant.reset-password.process-reset-password-form');
 });
 
-Route::group(['middleware' => ['auth:applicant']], function() {
+Route::group(['middleware' => ['auth.custom:applicant']], function() {
     Route::group(['middleware' => [ 'enforceApplicantAccountVerification']], function() {
         Route::group(['prefix' => 'profile-management'], function() {
             Route::get('/', [DisplayProfileViewController::class, 'handle'])->name('applicant.profile-management.display-profile-form');
