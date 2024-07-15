@@ -71,10 +71,6 @@ Route::group(['middleware' => ['auth:applicant']], function() {
             Route::delete('/{id}', [ProcessDeleteApplicationProcessingController::class, 'handle'])->name('applicant.application-processing.process-delete-application-processing');
         });
 
-        Route::group(['prefix' => 'change-password'], function() {
-            Route::get('/', [DisplayChangePasswordViewController::class, 'handle'])->name('applicant.change-password.display-change-password-form');
-            Route::post('/', [ProcessChangePasswordController::class, 'handle'])->name('applicant.change-password.process-change-password-form');
-        });
     });
 
     Route::group(['prefix' => 'dashboard'], function() {
@@ -90,4 +86,9 @@ Route::group(['middleware' => ['auth:applicant']], function() {
         Route::get('/', [DisplayApplicationPaymentViewController::class, 'handle'])->name('applicant.application-payment.display-application-payment');
         Route::post('/', [ProcessApplicationPaymentController::class, 'handle'])->name('applicant.application-payment.process-application-payment');
     });
-})->middleware(EnforceApplicantAccountVerification::class);
+
+    Route::group(['prefix' => 'change-password'], function() {
+        Route::get('/', [DisplayChangePasswordViewController::class, 'handle'])->name('applicant.change-password.display-change-password-form');
+        Route::post('/', [ProcessChangePasswordController::class, 'handle'])->name('applicant.change-password.process-change-password-form');
+    });
+});
