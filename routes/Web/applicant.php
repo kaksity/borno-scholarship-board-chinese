@@ -46,7 +46,7 @@ Route::group(['prefix' => 'reset-password'], function() {
 });
 
 Route::group(['middleware' => ['auth:applicant']], function() {
-    Route::group(['middleware' => [ 'enforceApplicantAccountVerification', 'enforceApplicationPayment']], function() {
+    Route::group(['middleware' => ['enforceApplicationPayment']], function() {
         Route::group(['prefix' => 'profile-management'], function() {
             Route::get('/', [DisplayProfileViewController::class, 'handle'])->name('applicant.profile-management.display-profile-form');
             Route::post('/', [ProcessUpdateProfileController::class, 'handle'])->name('applicant.profile-management.process-profile-form');
