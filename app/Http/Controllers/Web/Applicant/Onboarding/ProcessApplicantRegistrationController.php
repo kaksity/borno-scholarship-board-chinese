@@ -61,11 +61,11 @@ class ProcessApplicantRegistrationController extends Controller
                 'token' => $token
             ]);
 
-            Mail::to($applicant)->later(now()->addSeconds(5), new ApplicantAccountVerificationMail([
-                'surname' => $applicant->surname,
-                'other_names' => $applicant->other_names,
-                'token' => $token
-            ]));
+            // Mail::to($applicant)->later(now()->addSeconds(5), new ApplicantAccountVerificationMail([
+            //     'surname' => $applicant->surname,
+            //     'other_names' => $applicant->other_names,
+            //     'token' => $token
+            // ]));
 
         });
 

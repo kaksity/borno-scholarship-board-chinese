@@ -37,11 +37,11 @@ class ProcessResetPasswordController extends Controller
             'password' => Hash::make($password)
         ], $applicant->id);
 
-        Mail::to($applicant)->later(now()->addSeconds(5), new ApplicantResetAccountPasswordMail([
-            'surname' => $applicant->surname,
-            'other_names' => $applicant->other_names,
-            'password' => $password
-        ]));
+        // Mail::to($applicant)->later(now()->addSeconds(5), new ApplicantResetAccountPasswordMail([
+        //     'surname' => $applicant->surname,
+        //     'other_names' => $applicant->other_names,
+        //     'password' => $password
+        // ]));
 
         return back()->with(
             'success',
