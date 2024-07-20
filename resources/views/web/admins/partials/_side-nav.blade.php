@@ -5,6 +5,11 @@
         </a>
 
         <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.dashboard.display-dashboard-view') }}">
+                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
             <li class="sidebar-header">
                 Application
             </li>
