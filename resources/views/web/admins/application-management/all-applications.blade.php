@@ -40,6 +40,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="flex mt-3">
+                        {!! $applicants->links() !!}
+                    </div>
                 </div>
             </div>
         </div>
