@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Admin\ApplicationManagement\DisplayAllApplicationsViewController;
+use App\Http\Controllers\Web\Admin\ApplicationManagement\DisplaySingleApplicationDetailsViewController;
 use App\Http\Controllers\Web\Admin\Authentication\DisplayLoginViewController;
 use App\Http\Controllers\Web\Admin\Authentication\ProcessAdminLoginController;
 use App\Http\Controllers\Web\Admin\Authentication\ProcessAdminLogoutController;
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::post('/', [ProcessChangePasswordController::class, 'handle'])->name('admin.change-password.process-change-password-form');
     });
     Route::group(['prefix' => 'application-management'], function() {
+        Route::get('/{applicantId}', [DisplaySingleApplicationDetailsViewController::class, 'handle'])->name('admin.application-management.display-single-application-details');
         Route::get('/', [DisplayAllApplicationsViewController::class, 'handle'])->name('admin.application-management.display-application-management');
     });
 });

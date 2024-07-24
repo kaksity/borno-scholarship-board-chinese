@@ -35,6 +35,11 @@
                                 <td>{{ $applicant->earned_grades }}</td>
                                 <td>{{ $applicant->status }}</td>
                                 <td>
+                                    <a href="{{ route('admin.application-management.display-single-application-details', [
+                                        $applicant->id
+                                    ]) }}">
+                                        <i class="align-middle" data-feather="eye"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
