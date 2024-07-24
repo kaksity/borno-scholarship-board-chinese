@@ -18,5 +18,10 @@
                     <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Applications</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.application-management.display-application-management') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Reports</span>
+                </a>
+            </li>
     </div>
 </nav>
