@@ -6,7 +6,18 @@
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Application Details</h5>
+                <div class="d-flex">
+                    <div class="mr-5">
+                        <h5 class="card-title mb-0">Application Details</h5>
+                    </div>
+                    <div class="ml-5">
+                        <h5>
+                            <b>
+                                ({{ $applicant->courseOfStudy->name }})
+                            </b>
+                        </h5>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div>

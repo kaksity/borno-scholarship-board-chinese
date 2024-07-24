@@ -11,18 +11,23 @@ class DisplayAllApplicationsViewController extends Controller
 {
     public function __construct(
         private ApplicantActions $applicantActions
-    )
-    {}
+    ) {
+    }
 
     public function handle(ListApplicationsRequest $request)
     {
         $getApplicationsRequestOptions = $request->validated();
 
+        $relationships = [
+            'courseOfStudy'
+        ];
+
         $applicants = $this->applicantActions->getApplicantsFiltered(
-            $getApplicationsRequestOptions
+            $getApplicationsRequestOptions,
+            $relationships
         );
 
-        return view('web.admins.application-management.all-applications',[
+        return view('web.admins.application-management.all-applications', [
             'applicants' => $applicants
         ]);
     }

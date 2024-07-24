@@ -14,8 +14,8 @@
                     <table id="basic-btn" class="table mb-0">
                         <thead class="thead-light">
                             <tr>
-                                <th>Surname</th>
-                                <th>Other Names</th>
+                                <th>Full Name</th>
+                                <th>Course of Study</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>year</th>
@@ -27,8 +27,8 @@
                         <tbody>
                             @foreach ($applicants as $applicant)
                             <tr>
-                                <td>{{ $applicant->surname }}</td>
-                                <td>{{ $applicant->other_names }}</td>
+                                <td>{{ "$applicant->surname $applicant->other_names"}}</td>
+                                <td>{{ $applicant->courseOfStudy->name }}</td>
                                 <td>{{ $applicant->email }}</td>
                                 <td>{{ $applicant->phone_number }}</td>
                                 <td>{{ $applicant->year }}</td>
