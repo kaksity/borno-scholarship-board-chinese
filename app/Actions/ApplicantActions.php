@@ -62,7 +62,9 @@ class ApplicantActions
         $result = [];
         foreach ($statuses as $status) {
             $count = $applicationStatusCounts->get($status, (object)['status' => $status, 'total' => 0]);
-            $result[$status] = $count?->total ?? 0;
+            $result[$status] = is_null($count?->total) ? 0 : number_format(
+                $count->total
+            );
         }
         return $result;
     }
@@ -81,7 +83,9 @@ class ApplicantActions
         // Initialize the final result array
         $result = [];
         foreach ($courseCounts as $courseName => $courseCount) {
-            $result[$courseName] = $courseCount->total;
+            $result[$courseName] = number_format(
+                $courseCount->total
+            );
         }
         return $result;
     }

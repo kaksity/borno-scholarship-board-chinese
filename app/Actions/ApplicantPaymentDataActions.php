@@ -63,14 +63,14 @@ class ApplicantPaymentDataActions
     }
     public function getApplicantPaymentDataSummary()
     {
-        $paymentSummaries = ApplicantPaymentData::select('status', DB::raw('SUM(amount) as total_amount'))
+        $paymentSummaries = ApplicantPaymentData::select('status', DB::raw('COUNT(*) as total'))
         ->groupBy('status')
         ->get();
 
         $result = [];
         foreach ($paymentSummaries as $paymentSummary) {
             $result[$paymentSummary->status] = number_format(
-                $paymentSummary->total_amount
+                $paymentSummary->total
             );
         }
 

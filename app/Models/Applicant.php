@@ -10,6 +10,11 @@ class Applicant extends AbstractAuthenticatableModel
         'has_passed_grade_point' => 'boolean'
     ];
 
+    public function courseOfStudy()
+    {
+        return $this->belongsTo(CourseOfStudy::class, 'course_of_study_id');
+    }
+
     public function applicantBioData()
     {
         return $this->hasOne(ApplicantBioData::class, 'applicant_id');
