@@ -42,6 +42,24 @@
                     @endforeach
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12 d-flex">
+                    @foreach($paymentSummaries as $status => $totalAmount)
+                    <div class="card mx-1 col-md-6 col-lg-6 col-sm-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">{{ $status }} payments</h5>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">N{{ $totalAmount }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>

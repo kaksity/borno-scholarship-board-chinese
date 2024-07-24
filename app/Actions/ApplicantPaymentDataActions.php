@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\ApplicantPaymentData;
 use App\Repositories\Interfaces\ApplicantPaymentDataRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class ApplicantPaymentDataActions
 {
@@ -59,5 +60,20 @@ class ApplicantPaymentDataActions
         return $this->applicantPaymentData->with($relationships)->where([
             'rrr' => $reference
         ])->first();
+    }
+    public function getApplicantPaymentDataSummary()
+    {
+        $paymentSummaries = ApplicantPaymentData::select('status', DB::raw('SUM(amount) as total_amount'))
+        ->groupBy('status')
+        ->get();
+
+        $result = [];
+        foreach ($paymentSummaries as $paymentSummary) {
+            $result[$paymentSummary->status] = number_format(
+                $paymentSummary->total_amount
+            );
+        }
+
+        return $result;
     }
 }
