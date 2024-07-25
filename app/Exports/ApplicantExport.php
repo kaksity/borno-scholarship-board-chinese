@@ -57,16 +57,13 @@ class ApplicantExport implements FromCollection, WithHeadings, WithMapping
             $applicant->applicantBioData->gender,
             $applicant->applicantBioData->guardian_full_name,
             $applicant->applicantBioData->nin,
-            // $applicant->applicantBioData?->lga->name,
+            $applicant->applicantBioData?->lga->name ?? 'N/A',
         ];
     }
     public function collection()
     {
         $relationships = [
             'applicantBioData.lga',
-            'applicantUploadedDocumentData',
-            'applicantSubjectData.subject',
-            'applicantSubjectData.grade',
         ];
 
         return $this->applicantActions->getApplicantsReport(
