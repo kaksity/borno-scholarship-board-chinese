@@ -47,7 +47,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Application Status</label>
-                        <select class="form-select mb-3" name="year">
+                        <select class="form-select mb-3" name="status">
                             <option value="">
                                 Select Application Status
                             </option>
