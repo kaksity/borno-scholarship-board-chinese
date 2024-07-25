@@ -65,10 +65,10 @@
                             <option value="">
                                 Select has met requirements option
                             </option>
-                            <option value="true">
+                            <option value="Yes">
                                 Yes
                             </option>
-                            <option value="false">
+                            <option value="No">
                                 No
                             </option>
                         </select>

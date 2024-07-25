@@ -110,7 +110,7 @@ class ApplicantActions
             ]);
         })->when($hasPassedGradePoint, function($model, $hasPassedGradePoint) {
             $model->where([
-                'has_passed_grade_point' => $hasPassedGradePoint
+                'has_passed_grade_point' => $hasPassedGradePoint === 'Yes' ? true : false
             ]);
         })->orderBy('surname')->get();
     }
