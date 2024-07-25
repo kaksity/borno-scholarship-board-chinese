@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.application-management.display-application-management') }}">
+                <a class="sidebar-link" href="{{ route('admin.reports.display-generate-report') }}">
                     <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Reports</span>
                 </a>
             </li>

@@ -10,6 +10,8 @@ use App\Http\Controllers\Web\Admin\PasswordManagement\ChangePassword\DisplayChan
 use App\Http\Controllers\Web\Admin\PasswordManagement\ChangePassword\ProcessChangePasswordController;
 use App\Http\Controllers\Web\Admin\PasswordManagement\ResetPassword\DisplayResetPasswordViewController;
 use App\Http\Controllers\Web\Admin\PasswordManagement\ResetPassword\ProcessResetPasswordController;
+use App\Http\Controllers\Web\Admin\Reports\DisplayReportsViewController;
+use App\Http\Controllers\Web\Admin\Reports\ProcessGenerateReportsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'authentication'], function () {
@@ -34,5 +36,10 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::group(['prefix' => 'application-management'], function() {
         Route::get('/{applicantId}', [DisplaySingleApplicationDetailsViewController::class, 'handle'])->name('admin.application-management.display-single-application-details');
         Route::get('/', [DisplayAllApplicationsViewController::class, 'handle'])->name('admin.application-management.display-application-management');
+    });
+
+    Route::group(['prefix' => 'reports'], function() {
+        Route::post('/', [ProcessGenerateReportsController::class, 'handle'])->name('admin.reports.process-generate-report');
+        Route::get('/', [DisplayReportsViewController::class, 'handle'])->name('admin.reports.display-generate-report');
     });
 });

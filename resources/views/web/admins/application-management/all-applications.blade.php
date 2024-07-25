@@ -19,7 +19,7 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>year</th>
-                                <th>Total Endpoint</th>
+                                <th>Scored Points</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>

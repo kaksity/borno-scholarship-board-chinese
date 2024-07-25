@@ -116,7 +116,7 @@
                                     Local Government Area
                                 </b>
                                 <div>
-                                    {{ $applicant?->applicantBioData->lga_id }}
+                                    {{ $applicant?->applicantBioData?->lga->name }}
                                 </div>
                             </div>
                         </div>

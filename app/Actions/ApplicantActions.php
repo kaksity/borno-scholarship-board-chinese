@@ -89,4 +89,24 @@ class ApplicantActions
         }
         return $result;
     }
+    public function getApplicantsReport($getApplicantsReportFilterOptions, $relationships = [])
+    {
+        $courseOfStudy = $getApplicantsReportFilterOptions['course_of_study_id'] ?? null;
+        $year = $getApplicantsReportFilterOptions['year'] ?? null;
+        $status = $getApplicantsReportFilterOptions['status'] ?? null;
+
+        return $this->applicant->with($relationships)->when($status, function ($model, $status) {
+            $model->where([
+                'status' => $status
+            ]);
+        })->when($courseOfStudy, function($model, $courseOfStudy) {
+            $model->where([
+                'course_of_study_id' => $courseOfStudy
+            ]);
+        })->when($year, function($model, $year) {
+            $model->where([
+                'year' => $year
+            ]);
+        })->orderBy('surname')->get();
+    }
 }
