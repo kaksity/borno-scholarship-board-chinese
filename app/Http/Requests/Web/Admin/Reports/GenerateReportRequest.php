@@ -11,7 +11,8 @@ class GenerateReportRequest extends FormRequest
         return [
             'year' => ['nullable', 'string'],
             'course_of_study_id' => ['nullable', 'uuid'],
-            'status' => ['nullable', 'in:Applying,Submitted']
+            'status' => ['nullable', 'in:Applying,Submitted'],
+            'has_passed_grade_point' => ['nullable', 'boolean'],
         ];
     }
 }

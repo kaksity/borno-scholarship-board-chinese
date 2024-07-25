@@ -94,6 +94,7 @@ class ApplicantActions
         $courseOfStudy = $getApplicantsReportFilterOptions['course_of_study_id'] ?? null;
         $year = $getApplicantsReportFilterOptions['year'] ?? null;
         $status = $getApplicantsReportFilterOptions['status'] ?? null;
+        $hasPassedGradePoint = $getApplicantsReportFilterOptions['has_passed_grade_point'] ?? null;
 
         return $this->applicant->with($relationships)->when($status, function ($model, $status) {
             $model->where([
@@ -106,6 +107,10 @@ class ApplicantActions
         })->when($year, function($model, $year) {
             $model->where([
                 'year' => $year
+            ]);
+        })->when($hasPassedGradePoint, function($model, $hasPassedGradePoint) {
+            $model->where([
+                'has_passed_grade_point' => $hasPassedGradePoint
             ]);
         })->orderBy('surname')->get();
     }

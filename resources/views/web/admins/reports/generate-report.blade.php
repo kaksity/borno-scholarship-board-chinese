@@ -60,6 +60,20 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Has met requirements?</label>
+                        <select class="form-select mb-3" name="has_passed_grade_point">
+                            <option value="">
+                                Select has met requirements option
+                            </option>
+                            <option value="true">
+                                Yes
+                            </option>
+                            <option value="false">
+                                No
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Generate Report</button>
                     </div>
                 </form>
